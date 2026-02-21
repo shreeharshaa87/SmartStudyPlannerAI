@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Planner AI</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Smart Study Planner AI</h1>
+            <p class="subtitle">AI-Powered Study Schedule & Completion Prediction</p>
+        </header>
+
+        <main>
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>📚 Add Study Topics</h2>
+                
+                <div class="topic-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="e.g., Mathematics">
+                        </div>
+                        <div class="form-group">
+                            <label for="topic">Topic</label>
+                            <input type="text" id="topic" placeholder="e.g., Calculus">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="difficulty">Difficulty (1-10)</label>
+                            <input type="number" id="difficulty" min="1" max="10" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="hours_required">Hours Required</label>
+                            <input type="number" id="hours_required" min="1" step="0.5" value="5">
+                        </div>
+                    </div>
+                    
+                    <button type="button" id="addTopicBtn" class="btn btn-primary">+ Add Topic</button>
+                </div>
+
+                <!-- Topics List -->
+                <div class="topics-list">
+                    <h3>Added Topics:</h3>
+                    <ul id="topicsList">
+                        <li class="empty-message">No topics added yet</li>
+                    </ul>
+                </div>
+
+                <!-- Schedule Settings -->
+                <div class="schedule-settings">
+                    <h3>📅 Schedule Settings</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="days_left">Days Left Until Exam</label>
+                            <input type="number" id="days_left" min="1" value="10">
+                        </div>
+                        <div class="form-group">
+                            <label for="hours_per_day">Hours Per Day</label>
+                            <input type="number" id="hours_per_day" min="1" max="24" value="4">
+                        </div>
+                    </div>
+                    <button type="button" id="generatePlanBtn" class="btn btn-success">🚀 Generate Smart Plan</button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>📊 Your Study Plan</h2>
+                
+                <!-- Probability Display -->
+                <div class="probability-display">
+                    <div class="probability-card">
+                        <h3>🎯 Completion Probability</h3>
+                        <div class="probability-value" id="probabilityValue">0%</div>
+                        <p class="probability-label">Based on AI Analysis</p>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stat">
+                            <span class="stat-label">Total Hours:</span>
+                            <span class="stat-value" id="totalHours">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Avg Difficulty:</span>
+                            <span class="stat-value" id="avgDifficulty">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart -->
+                <div class="chart-container">
+                    <h3>📈 Daily Workload Distribution</h3>
+                    <canvas id="workloadChart"></canvas>
+                </div>
+
+                <!-- Timetable -->
+                <div class="timetable-container">
+                    <h3>📋 Daily Study Timetable</h3>
+                    <div id="timetable">
+                        <!-- Timetable will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Display -->
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <span id="errorText"></span>
+                <button type="button" class="btn-close" onclick="hideError()">×</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Shree Harshaa | Smart Study Planner</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
